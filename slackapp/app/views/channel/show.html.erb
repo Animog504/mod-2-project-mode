@@ -1,0 +1,65 @@
+<head>
+  <title>Browse Channels</title>
+  <style>
+    .big{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        grid-gap: 1em;
+        align-items: stretch;
+        font-size: 30px;
+        background: #4D394B !important;
+    }
+    .menu{
+        grid-column: 1;
+        grid-row: 1 / span 4;
+        border: 1px solid black;
+    }
+
+    .menu p {
+        color: white;
+    }
+    .content{
+        grid-column: 2 / span 2;
+        grid-row: 1 / span 4;
+                background: lightgray;
+    }
+    .post{
+        border: 1px solid grey;
+    }
+    .message{
+        grid-row: 5;
+        grid-column: 2 / span 2;
+    }
+    .it{
+        width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class = "big">
+    <div class = "menu">
+        <a class = "button" href = "/channel/"><div>Back</div></a>
+        <div><p>Name: <%=@channel.name%></div>
+        <div><p>Description: <%=@channel.description%></p></div>
+    </div>
+    <%@channel.posts.each do |post|%>
+        <div class = "content">
+            <div class = "post">
+            <div><%=post.user.display_name%></div>
+            <div><%=post.content%></div>
+        </div>
+        <%end%>
+    </div>
+    <br>
+    <div class = "message">
+        <form action = "/post/" method = POST>
+            <input class = "it" type="text" id="defaultRegisterFormEmail"  placeholder="Message" name = "content">
+            <input type = "hidden" value = <%=@channel.id%> name = "channel_id"/>
+            <input type = "hidden" value = <%=@user.id%> name = "user_id"/>
+        </form>
+    </div>
+</div>
+</body>
+
+

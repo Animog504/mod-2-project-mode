@@ -1,0 +1,90 @@
+<head>
+  <title>Browse Channels</title>
+  <style>
+  
+    body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #4D394B !important;
+        }
+      
+    h2 {
+      color: lightgray;
+    }
+
+    a{
+      text-decoration: none;
+      color: white;
+    }
+    .big{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1em;
+    }
+    .menu{
+        grid-column: 2;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        justify-items: stretch;
+        align-items: center;
+        text-align: center;
+        grid-gap: 1px;
+    }
+    .one{
+        border: 1px solid black;
+        grid-column: 1; 
+        background-color: #0C9689 !important;
+    }
+
+    .two{
+        border: 1px solid black;
+        grid-column: 2;
+        background-color: #5C9689 !important;
+    }
+    .three{
+        border: 1px solid black;
+        grid-column: 3;
+        background-color: #5C9689 !important;
+    }
+    .main{
+      grid-column: 2;
+      grid-row: 3;
+      text-align: center;
+    }
+    .each {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  </style>
+</head>
+<body>
+<h2>Hello <%=@user.display_name%></h2>
+<div class = "big">
+    <div class = "new">
+        <a class = "button" href = "/channel/new">Create New Channel</a>
+        <br>
+        <a class = "button" href = "/user/<%=@user.id%>/edit">Edit Profile</a> 
+        <br>
+        <a class = "button" href = "/dm/new">Start New DM</a>
+    </div>
+  <div class = "menu">
+    <a class = "one" href = "/channel/"><div>Channels</div></a>
+    <a class = "two" href = "/user/"><div>Users</div></a>
+    <a class = "three" href = "/dm/"><div>DM's</div></a>
+  </div>
+  <div class = "main">
+    <% @channels.each do |channel| %>
+      <div class = "each">
+        <a class = "button" href = "/channel/<%=channel.id%>"><%=channel.name%></a>
+      </div>
+      <br>
+    <% end %>
+  </div>
+</div>
+</body>
+
+
