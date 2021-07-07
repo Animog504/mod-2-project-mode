@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Insultinatr!</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="../../styles/menu.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="header">
+    <h1>Login</h1>
+  </div>
+  <div>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUgG3o6e75uadcdwzpwJ3VAXXPiKZdWnN8gBavwd5j1smegtNzIQ" alt="Avatar" class="avatar">
+    <%= form_for(:session, url: login_path) do |form|%>
+        <div>
+            <%= form.label :email %>
+            <%= form.text_field :email, placeholder: "Enter Username", required: true %>
+        </div>
+        <div>
+            <%= form.label :password %>
+            <%= form.password_field :password, placeholder: "Enter Password", required: true %>
+        </div>
+        <button type="submit" class="loginbtn">Log In!</button><br><br>
+    <% end %>
+    </div>
+    <a href="/users/new">Create New User</a>
+</body>
+</html>

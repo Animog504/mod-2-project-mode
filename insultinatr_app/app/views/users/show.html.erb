@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Insultinatr!</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+    <link rel="stylesheet" type="text/css" href="../../styles/menu.css">
+</head>
+<body class="container">
+<div class="header">
+    <h1>
+        You made it to your user page, dummie!
+    </h1>
+</div>
+
+<div>
+<h2>Insults:</h2>
+    <% @insults.each do |insult| %>
+        <% if insult.user_id == @user_id %>
+            <p><%= insult.insult %>
+        <% end %>
+    <% end %>
+<h2>Fake Names:</h2>
+    <% @names.each do |name| %>
+        <% if name.user_id == @user_id %>
+            <p><%= name.name %>
+        <% end %>
+    <% end %>
+</div>
+
+<div class="navbar">
+    <%= link_to "Insults!", insult_path %>
+    <%= link_to "Fake Names!", name_path %>
+    <%= link_to "Log out", logout_path %>
+</div>
+</body>
+</html>

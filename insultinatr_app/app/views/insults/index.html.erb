@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="../../styles/menu.css">
+    <title>The Insultinatr!</title>
+</head>
+<body>
+    <% if @insults.length == 0 %>
+        <h3>Sorry you don't have any insults</h3>
+        <h3><a href="/insults/new">Follow me for insults!</a></h3>
+    <% else %>
+        <% @insults.each do |insult| %>
+            <P> <%= insult.insult %></p>
+        <% end %>
+    <% end %>
+</body>
+</html>
